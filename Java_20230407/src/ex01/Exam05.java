@@ -16,7 +16,7 @@ public class Exam05 {
 		
 		if(number % 2 ==0 &&  number % 3 ==0){
 		 System.out.println(" 2와 3의 배수입니다 ");
-		}else {
+		}else (number % 2! ==0 &&  number % 3 ==0)
 				System.out.println("2와 3의 배수가 아닙니다"); 
 	}
 	}
