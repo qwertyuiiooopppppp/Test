@@ -1,0 +1,137 @@
+--  전체 테이블 조회 
+select * 
+from all_tables;
+
+--테이블 전체 조회
+select*
+from DEPARTMENTS;
+
+--특정 컬럼만 조회
+select department_id, department_name
+from DEPARTMENTS;
+
+--별칭(애칭) 사용하기
+select department_id as "부서번호", department_name as 부서명
+from DEPARTMENTS;
+
+--중복제거 
+select distinct location_id
+from DEPARTMENTS;
+
+--연결 연산자(||)
+select first_name || last_name as full_name
+from EMPLOYEES;
+
+-- " 큰따옴표안됨 '작은 따옴표 해야함  
+select 'FIRST' || last_name as 성명
+from EMPLOYEES;
+
+-- 산술연산
+select salary , salary * 1.1 as 인상
+from EMPLOYEES;
+
+--1. countries 테이블에서 컬럼명 country_id를 국가ID, country_name를 국가명으로 조회
+SELECT country_id 국가ID, country_name 국가명
+from countries;
+
+--2. countries 테이블에서 region_id를 중복제외하고 조회
+select distinct region_id
+from COUNTRIES;
+
+--3. countries 테이블에서 country_name과 country_id를 연결하여 조회
+select country_name || country_id
+from COUNTRIES;
+
+--4.  jobs 테이블에서 job_title, min_salary, max_salary 컬럼을 최소연봉과 최대연봉을 10% 인상된 상태로 조회
+SELECT JOB_TITLE, MIN_SALARY*1.10 AS 최소연봉인상, MAX_SALARY*1.10 AS 최대연봉인상
+FROM JOBS;
+
+--where 조건 비교연산자
+select*
+from EMPLOYEES
+where EMPLOYEE_ID=110;
+
+select*
+from EMPLOYEES
+where not EMPLOYEE_ID <> 110;
+
+select*
+from EMPLOYEES
+where EMPLOYEE_ID >= 110;
+
+select*
+from EMPLOYEES
+where not (EMPLOYEE_ID >= 110 and EMPLOYEE_ID <120);
+
+select *
+from EMPLOYEES
+where first_name = 'John' or last_name = 'Popp';
+
+select *
+from EMPLOYEES
+where not(first_name = 'John' or last_name = 'Popp');
+
+select *
+from EMPLOYEES
+where not(first_name = 'David' );
+
+
+--1.employees 테이블에서 first_name이 david인 직원 조회
+SELECT *
+FROM EMPLOYEES
+where first_name = 'David';
+
+--2.
+select * from JOBS where MIN_SALARY = 4000;
+
+--3.
+select*
+from jobs
+where Min_salary > 8000;
+
+--4.  jobs 테이블에서 최대월급이 10000이하인 직업 조회
+select*
+from jobs
+where MAX_salary <= 10000;
+
+
+--5. jobs 테이블에서 최소월급이 4000이상이고 최대월급이 10000 이하인 직업 조회
+select*
+from jobs
+where MIN_salary >=4000 and MAX_SALARY <=10000;
+
+--6.employees 테이블에서 job_id가  'IT_PROG'이면서 salary가 5000 초과인 직원 조회
+select *
+from EMPLOYEES
+where job_id = 'IT_PROG' and salary > 5000;
+
+--정렬
+
+--first name 이름으로 오름차순 정렬 
+select first_name, last_name
+from EMPLOYEES
+order by first_name asc;  -- order by first_name; asc 생략 가능
+
+
+--first name 이름으로 내림차순 정렬 
+select first_name, last_name
+from EMPLOYEES
+order by first_name desc;
+
+--country_ID 1차 오름차순 정렬, 1차 CITY 내림차순 정렬
+select country_id, city
+from LOCATIONS
+order by COUNTRY_ID, city desc;
+
+--job_id가 'ST_CLERK' 레코드 중 first_name 으로 오름차순 정렬
+-- 순서 기억
+--select
+--where
+--order by 
+select *
+from EMPLOYEES
+where JOB_ID = 'ST_CLERK'
+order by first_name;
+
+
+
